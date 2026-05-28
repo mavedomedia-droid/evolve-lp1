@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Future of Work – Marketing | Evolve Engine × AltSchool</title>
-<meta name="description" content="A virtual conference on sustainable, predictable acquisition — measured in real customers, not installs or reach. 24th May, 12–4PM. Free." />
+<title>The Future of Marketing | Evolve Engine × AltSchool</title>
+<meta name="description" content="A virtual conference on sustainable, predictable acquisition, measured in real customers, not installs or reach. 4th July, 12 to 4PM. Live on YouTube." />
 
 <!-- Open Graph -->
-<meta property="og:title" content="The Future of Work – Marketing" />
-<meta property="og:description" content="Sustainable, predictable acquisition — measured in real customers, not installs or reach. 24th May. Free virtual conference." />
+<meta property="og:title" content="The Future of Marketing" />
+<meta property="og:description" content="Sustainable, predictable acquisition, measured in real customers, not installs or reach. 4th July. Free live class on YouTube." />
 <meta property="og:type" content="website" />
 
 <!-- Fonts -->
@@ -29,7 +29,7 @@
 <!-- Babel for in-browser JSX (only needed because no build step) -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-<!-- ===== Google Tag Manager — replace GTM-XXXXXXX before going live ===== -->
+<!-- ===== Google Tag Manager, replace GTM-XXXXXXX before going live ===== -->
 <script>
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -61,12 +61,12 @@ const { useState, useEffect, Fragment } = React;
 const { motion, AnimatePresence } = window.Motion || window.FramerMotion || window.framerMotion || window.framer_motion || window["framer-motion"] || window.MotionGlobal || window;
 
 /* =========================================================================
-   THE FUTURE OF WORK – MARKETING
+   THE FUTURE OF MARKETING
    Evolve Engine × AltSchool
    ========================================================================= */
 
-const EVENT_DATE = new Date("2026-05-24T12:00:00+01:00");
-const GAS_ENDPOINT = "https://script.google.com/macros/s/REPLACE_ME/exec";
+const EVENT_DATE = new Date("2026-07-04T12:00:00+01:00");
+const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwPy4D8X5NJHRjR2kthlDPlke6ptb7zxzJqvm-p3byYaQc9x-K9UDB7BsNgRRA3s8RUsQ/exec";
 
 const FONT_DISPLAY = "'Bricolage Grotesque', system-ui, sans-serif";
 const FONT_BODY = "'Geist', system-ui, sans-serif";
@@ -82,6 +82,18 @@ const C = {
   red: "#E63946",
   ink: "#08091F",
 };
+
+// ---------- Conference topics (placeholder — swap with real list) ---------
+const TOPICS = [
+  "AI-Driven Customer Acquisition",
+  "Programmatic Media Buying",
+  "Performance Marketing Fundamentals",
+  "The Modern Marketing Stack",
+  "Sustainable Growth Systems",
+  "Marketing Automation & Workflows",
+  "Attribution & Measurement",
+  "Future Marketing Careers",
+];
 
 // ---------- helpers --------------------------------------------------------
 function pushDL(event, payload = {}) {
@@ -110,7 +122,7 @@ const ArrowPattern = ({ opacity = 0.05 }) => (
   </svg>
 );
 
-// ---------- inline icons (replaces lucide-react) ---------------------------
+// ---------- inline icons ---------------------------------------------------
 const Icon = ({ children, size = 16, color = "currentColor", stroke = 2 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
     fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round">
@@ -212,19 +224,55 @@ const Field = ({ label, error, children, required }) => (
 
 const inputClass = "w-full px-3 py-2 bg-white border rounded-none focus:outline-none transition-colors text-[13.5px]";
 
+// Multi-select pill picker for attendee "Areas of Interest"
+const TopicPicker = ({ value, onChange, error }) => {
+  const toggle = (t) => {
+    if (value.includes(t)) onChange(value.filter((x) => x !== t));
+    else onChange([...value, t]);
+  };
+  return (
+    <div>
+      <div className="flex flex-wrap gap-1.5">
+        {TOPICS.map((t) => {
+          const active = value.includes(t);
+          return (
+            <button key={t} type="button" onClick={() => toggle(t)}
+              className="px-2.5 py-1.5 text-[11px] font-semibold transition-colors text-left"
+              style={{
+                background: active ? C.ink : "white",
+                color: active ? C.cream : C.ink,
+                border: `1px solid ${active ? C.ink : `${C.ink}33`}`,
+                fontFamily: FONT_MONO,
+              }}>
+              {t}
+            </button>
+          );
+        })}
+      </div>
+      {error && <span className="block text-xs mt-1.5" style={{ color: C.red }}>{error}</span>}
+    </div>
+  );
+};
+
 const RegistrationForm = () => {
   const [tab, setTab] = useState("attend");
   const [status, setStatus] = useState("idle");
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
-    full_name: "", email: "", phone: "", role: "",
-    company: "", city: "",
+    full_name: "", email: "", phone: "",
+    linkedin_url: "", city: "",
+    areas_of_interest: [],
+    role: "",
     organization: "", proposed_topic: "", bio: "", portfolio_url: "",
   });
 
   const update = (k) => (e) => {
     setForm((s) => ({ ...s, [k]: e.target.value }));
     if (errors[k]) setErrors((er) => ({ ...er, [k]: undefined }));
+  };
+  const updateTopics = (arr) => {
+    setForm((s) => ({ ...s, areas_of_interest: arr }));
+    if (errors.areas_of_interest) setErrors((er) => ({ ...er, areas_of_interest: undefined }));
   };
 
   const validate = () => {
@@ -233,10 +281,15 @@ const RegistrationForm = () => {
     if (!form.email.trim()) e.email = "Required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email";
     if (!form.phone.trim()) e.phone = "Required";
-    if (!form.role.trim()) e.role = "Required";
-    if (tab === "speaker") {
+
+    if (tab === "attend") {
+      if (!form.linkedin_url.trim()) e.linkedin_url = "Required";
+      else if (!/linkedin\.com\//i.test(form.linkedin_url)) e.linkedin_url = "Enter a valid LinkedIn URL";
+      if (form.areas_of_interest.length === 0) e.areas_of_interest = "Pick at least one topic";
+    } else {
+      if (!form.role.trim()) e.role = "Required";
       if (!form.organization.trim()) e.organization = "Required";
-      if (!form.proposed_topic.trim()) e.proposed_topic = "Required";
+      if (!form.proposed_topic.trim()) e.proposed_topic = "Pick a topic";
       if (!form.bio.trim()) e.bio = "Required";
       if (!form.portfolio_url.trim()) e.portfolio_url = "Required";
     }
@@ -252,7 +305,9 @@ const RegistrationForm = () => {
     const payload = tab === "attend"
       ? { registration_type: "attendee",
           full_name: form.full_name, email: form.email, phone: form.phone,
-          role: form.role, company: form.company, city: form.city,
+          linkedin_url: form.linkedin_url,
+          areas_of_interest: form.areas_of_interest.join(", "),
+          city: form.city,
           timestamp: new Date().toISOString() }
       : { registration_type: "speaker",
           full_name: form.full_name, email: form.email, phone: form.phone,
@@ -274,9 +329,9 @@ const RegistrationForm = () => {
 
   const closeSuccess = () => {
     setStatus("idle");
-    setForm({ full_name: "", email: "", phone: "", role: "",
-      company: "", city: "",
-      organization: "", proposed_topic: "", bio: "", portfolio_url: "" });
+    setForm({ full_name: "", email: "", phone: "",
+      linkedin_url: "", city: "", areas_of_interest: [],
+      role: "", organization: "", proposed_topic: "", bio: "", portfolio_url: "" });
   };
 
   return (
@@ -321,39 +376,47 @@ const RegistrationForm = () => {
             </Field>
           </div>
 
-          <Field label={tab === "attend" ? "AREA OF INTEREST / ROLE" : "CURRENT ROLE"}
-            required error={errors.role}>
-            <input type="text" className={inputClass}
-              style={{ borderColor: errors.role ? C.red : `${C.ink}33` }}
-              value={form.role} onChange={update("role")}
-              placeholder={tab === "attend" ? "e.g. Growth Marketer, Founder, Student" : "e.g. Head of Growth"} />
-          </Field>
-
           {tab === "attend" ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <Field label="COMPANY (OPTIONAL)">
-                <input type="text" className={inputClass}
-                  style={{ borderColor: `${C.ink}33` }}
-                  value={form.company} onChange={update("company")} />
+            <Fragment>
+              <Field label="LINKEDIN URL" required error={errors.linkedin_url}>
+                <input type="url" className={inputClass}
+                  style={{ borderColor: errors.linkedin_url ? C.red : `${C.ink}33` }}
+                  value={form.linkedin_url} onChange={update("linkedin_url")}
+                  placeholder="https://linkedin.com/in/yourname" />
               </Field>
-              <Field label="CITY">
+
+              <Field label="AREAS OF INTEREST (PICK ONE OR MORE)" required error={errors.areas_of_interest}>
+                <TopicPicker value={form.areas_of_interest} onChange={updateTopics} />
+              </Field>
+
+              <Field label="CITY (OPTIONAL)">
                 <input type="text" className={inputClass}
                   style={{ borderColor: `${C.ink}33` }}
                   value={form.city} onChange={update("city")} placeholder="e.g. Lagos" />
               </Field>
-            </div>
+            </Fragment>
           ) : (
             <Fragment>
+              <Field label="CURRENT ROLE" required error={errors.role}>
+                <input type="text" className={inputClass}
+                  style={{ borderColor: errors.role ? C.red : `${C.ink}33` }}
+                  value={form.role} onChange={update("role")}
+                  placeholder="e.g. Head of Growth" />
+              </Field>
               <Field label="ORGANIZATION" required error={errors.organization}>
                 <input type="text" className={inputClass}
                   style={{ borderColor: errors.organization ? C.red : `${C.ink}33` }}
                   value={form.organization} onChange={update("organization")} />
               </Field>
               <Field label="PROPOSED TOPIC" required error={errors.proposed_topic}>
-                <input type="text" className={inputClass}
-                  style={{ borderColor: errors.proposed_topic ? C.red : `${C.ink}33` }}
-                  value={form.proposed_topic} onChange={update("proposed_topic")}
-                  placeholder="What would you like to speak about?" />
+                <select className={inputClass}
+                  style={{ borderColor: errors.proposed_topic ? C.red : `${C.ink}33`, appearance: "none", backgroundImage: `linear-gradient(45deg, transparent 50%, ${C.ink} 50%), linear-gradient(135deg, ${C.ink} 50%, transparent 50%)`, backgroundPosition: `calc(100% - 14px) 50%, calc(100% - 9px) 50%`, backgroundSize: `5px 5px, 5px 5px`, backgroundRepeat: "no-repeat", paddingRight: "28px" }}
+                  value={form.proposed_topic} onChange={update("proposed_topic")}>
+                  <option value="">Select a topic...</option>
+                  {TOPICS.map((t) => (
+                    <option key={t} value={t}>{t}</option>
+                  ))}
+                </select>
               </Field>
               <Field label="SHORT BIO" required error={errors.bio}>
                 <textarea className={inputClass}
@@ -383,6 +446,12 @@ const RegistrationForm = () => {
             )}
           </motion.button>
 
+          {tab === "attend" && (
+            <p className="text-[10.5px] text-center" style={{ color: `${C.ink}88`, fontFamily: FONT_MONO }}>
+              LIVE ATTENDANCE IS FREE. RECORDED VERSION SOLD SEPARATELY.
+            </p>
+          )}
+
           {status === "error" && (
             <div className="text-xs p-2 text-center" style={{ background: `${C.red}11`, color: C.red }}>
               Something went wrong. Please try again.
@@ -408,11 +477,11 @@ const RegistrationForm = () => {
                 <CheckIcon size={20} color={C.ink} />
               </div>
               <h3 className="text-xl mb-2 font-bold" style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>
-                {tab === "attend" ? "You're in. See you on the 24th." : "Application received."}
+                {tab === "attend" ? "You're in. See you on July 4th." : "Application received."}
               </h3>
               <p className="text-[13.5px] leading-relaxed" style={{ color: "#444" }}>
                 {tab === "attend"
-                  ? "We've saved your spot. A confirmation with the link to join is on its way to your inbox."
+                  ? "We've saved your spot. A confirmation with the YouTube Live link is on its way to your inbox."
                   : "Thanks for proposing to speak. We'll review your submission and get back to you over email within a few days."}
               </p>
               <button onClick={closeSuccess}
@@ -471,8 +540,7 @@ const Hero = () => (
             transition={{ duration: 0.55, delay: 0.08 }}
             className="font-bold leading-[0.9] tracking-[-0.025em]"
             style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2.75rem, 8vw, 6rem)" }}>
-            The Future<br />Of Work —<br />
-            <span style={{ color: C.lime }}>Marketing.</span>
+            The Future<br />Of <span style={{ color: C.lime }}>Marketing.</span>
           </motion.h1>
 
           <motion.p
@@ -480,7 +548,7 @@ const Hero = () => (
             transition={{ duration: 0.55, delay: 0.16 }}
             className="mt-4 md:mt-5 text-[15px] md:text-base leading-snug max-w-md"
             style={{ color: C.peri, fontFamily: FONT_BODY }}>
-            Sustainable, predictable acquisition — measured in real customers, not installs or reach.
+            Sustainable, predictable acquisition, measured in real customers, not installs or reach.
           </motion.p>
 
           <motion.div
@@ -490,17 +558,17 @@ const Hero = () => (
             style={{ fontFamily: FONT_MONO }}>
             <div className="flex items-center gap-1.5" style={{ color: C.cream }}>
               <Calendar size={12} color={C.peri} />
-              <span className="tracking-wide">24 MAY</span>
+              <span className="tracking-wide">4 JUL</span>
             </div>
             <div className="w-px h-3" style={{ background: `${C.peri}44` }} />
             <div className="flex items-center gap-1.5" style={{ color: C.cream }}>
               <Clock size={12} color={C.peri} />
-              <span className="tracking-wide">12PM — 4PM</span>
+              <span className="tracking-wide">12PM TO 4PM</span>
             </div>
             <div className="w-px h-3" style={{ background: `${C.peri}44` }} />
             <div className="flex items-center gap-1.5" style={{ color: C.cream }}>
               <Radio size={12} color={C.peri} />
-              <span className="tracking-wide">VIRTUAL</span>
+              <span className="tracking-wide">YOUTUBE LIVE</span>
             </div>
           </motion.div>
 
@@ -596,12 +664,6 @@ const Speakers = () => (
 );
 
 // ---------- WHY IT MATTERS -------------------------------------------------
-const WHY_TOPICS = [
-  "Programmatic media buying", "AI-driven acquisition", "Cost per first customer",
-  "Sustainable growth systems", "The evolving marketing stack", "Marketing automation",
-  "Future marketing careers",
-];
-
 const WhyItMatters = () => (
   <section className="relative py-14 md:py-20" style={{ background: C.cream, color: C.ink }}>
     <div className="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-[1fr,1.2fr] gap-8 lg:gap-14 items-start">
@@ -616,13 +678,13 @@ const WhyItMatters = () => (
           Reach and installs used to be enough. They aren't anymore. Acquisition
           costs keep climbing, attribution keeps breaking, and most of what
           marketers measure has stopped meaning much. Meanwhile, AI and
-          programmatic systems are quietly rewriting how media gets bought — and
-          how growth gets paid for. This conference is about that shift: what
-          actually drives customers, and what working in marketing looks like
-          when the work itself is changing.
+          programmatic systems are quietly rewriting how media gets bought,
+          and how growth gets paid for. This conference is about that shift:
+          what actually drives customers, and what working in marketing looks
+          like when the work itself is changing.
         </p>
         <div className="flex flex-wrap gap-2">
-          {WHY_TOPICS.map((t) => (
+          {TOPICS.map((t) => (
             <span key={t} className="px-3 py-1.5 text-[11px] font-semibold border"
               style={{ borderColor: `${C.ink}44`, fontFamily: FONT_MONO, color: C.ink }}>{t}</span>
           ))}
@@ -663,10 +725,10 @@ const EventDetails = () => (
     <div className="relative max-w-7xl mx-auto px-5 md:px-8">
       <SectionLabel color={C.cream}>EVENT DETAILS</SectionLabel>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-7 mt-4">
-        {[{ l: "DATE", v: "24th May" },
-          { l: "TIME", v: "12PM – 4PM" },
+        {[{ l: "DATE", v: "4th July" },
+          { l: "TIME", v: "12PM to 4PM" },
           { l: "VENUE", v: "Virtual" },
-          { l: "PLATFORM", v: "Zoom / Livestream" },
+          { l: "PLATFORM", v: "YouTube Live" },
           { l: "ORGANIZER", v: "Evolve Engine" },
           { l: "PARTNER", v: "AltSchool" }].map((d) => (
           <div key={d.l} className="border-l pl-3" style={{ borderColor: `${C.cream}66` }}>
@@ -717,12 +779,12 @@ const WhoShouldAttend = () => (
 
 // ---------- FAQ ------------------------------------------------------------
 const FAQS = [
-  { q: "Is the conference free?", a: "Yes. The Future of Work – Marketing is completely free to attend. Just register your spot and you're in." },
-  { q: "Will I receive the link by email?", a: "Yes. Once you register, a confirmation email goes out immediately. The link to join is sent ahead of the event." },
+  { q: "Is the live class free?", a: "Yes. The live class on July 4th is completely free to attend on YouTube Live. Just register your spot and you're in." },
+  { q: "Will I receive the link by email?", a: "Yes. Once you register, a confirmation email goes out immediately. The YouTube Live link is sent ahead of the event." },
+  { q: "Will the session be recorded?", a: "Yes. The live class is free, but the recorded version is sold separately as a paid product for those who can't attend live or want to revisit the material." },
   { q: "Is the conference beginner friendly?", a: "Yes. Sessions are designed to be useful whether you're three months or ten years into your marketing career." },
-  { q: "Can I apply to become a speaker?", a: "Yes — use the 'Become A Speaker' tab on the registration form. Tell us your proposed topic and a short bio, and we'll review." },
-  { q: "Will the session be recorded?", a: "Yes. Recordings are sent to all registered attendees within 48 hours after the conference ends." },
-  { q: "How do I join the livestream?", a: "You'll receive the link to join by email after you've registered. Click it at the event start time." },
+  { q: "Can I apply to become a speaker?", a: "Yes, use the 'Become A Speaker' tab on the registration form. Pick your proposed topic from the list, add a short bio and portfolio link, and we'll review." },
+  { q: "How do I join the live class?", a: "You'll receive the YouTube Live link by email after you've registered. Click it at the event start time on July 4th." },
 ];
 
 const FAQItem = ({ q, a, isOpen, onToggle }) => (
@@ -803,7 +865,7 @@ const Footer = () => (
         <div>
           <EvolveEngineLogo />
           <p className="mt-3 text-[13px] max-w-xs" style={{ color: C.peri, fontFamily: FONT_BODY }}>
-            Programmatic media buying, paid per customer — not per click.
+            Programmatic media buying, paid per customer, not per click.
           </p>
         </div>
         <div>
@@ -831,8 +893,8 @@ const Footer = () => (
       </div>
       <div className="pt-4 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-[11px]"
         style={{ borderColor: `${C.peri}22`, color: C.peri, fontFamily: FONT_MONO }}>
-        <div>© {new Date().getFullYear()} EVOLVE ENGINE — ALL RIGHTS RESERVED</div>
-        <div className="tracking-[0.2em]">THE FUTURE OF WORK · MARKETING</div>
+        <div>© {new Date().getFullYear()} EVOLVE ENGINE, ALL RIGHTS RESERVED</div>
+        <div className="tracking-[0.2em]">THE FUTURE OF MARKETING</div>
       </div>
     </div>
   </footer>
