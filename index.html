@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Future of Marketing | Evolve Engine × AltSchool</title>
+<title>The Future of Marketing | Evolve Engine</title>
 <meta name="description" content="A virtual conference on sustainable, predictable acquisition, measured in real customers, not installs or reach. 4th July, 12 to 4PM. Live on YouTube." />
 
 <!-- Open Graph -->
@@ -62,7 +62,7 @@ const { motion, AnimatePresence } = window.Motion || window.FramerMotion || wind
 
 /* =========================================================================
    THE FUTURE OF MARKETING
-   Evolve Engine × AltSchool
+   Evolve Engine
    ========================================================================= */
 
 const EVENT_DATE = new Date("2026-07-04T12:00:00+01:00");
@@ -153,13 +153,6 @@ const EvolveEngineLogo = ({ color = C.cream }) => (
       <div className="text-[9px] tracking-[0.18em] font-bold" style={{ color }}>EVOLVE</div>
       <div className="text-[9px] tracking-[0.18em] font-bold" style={{ color }}>ENGINE</div>
     </div>
-  </div>
-);
-
-const AltSchoolLogo = ({ color = C.cream }) => (
-  <div className="leading-[0.95]" style={{ fontFamily: FONT_DISPLAY, color }}>
-    <div className="text-[11px] tracking-[0.05em] font-bold">Alt</div>
-    <div className="text-[11px] tracking-[0.05em] font-bold border-t-2 pt-0.5" style={{ borderColor: color }}>School</div>
   </div>
 );
 
@@ -516,12 +509,6 @@ const Hero = () => (
     <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-5 pb-10 md:pt-6 md:pb-14">
       <nav className="flex items-center justify-between mb-7 md:mb-9">
         <EvolveEngineLogo />
-        <div className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.2em]"
-          style={{ fontFamily: FONT_MONO, color: C.peri }}>
-          <span>IN PARTNERSHIP WITH</span>
-          <span style={{ color: C.peri }}>×</span>
-          <AltSchoolLogo />
-        </div>
         <button onClick={() => { pushDL("cta_click", { cta: "nav_register" }); scrollToId("register"); }}
           className="inline-flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold tracking-[0.1em] transition-colors"
           style={{ background: C.cream, color: C.ink, fontFamily: FONT_DISPLAY }}>
@@ -724,13 +711,12 @@ const EventDetails = () => (
       style={{ backgroundImage: `repeating-linear-gradient(90deg, ${C.cream}22 0 1px, transparent 1px 14px)` }} />
     <div className="relative max-w-7xl mx-auto px-5 md:px-8">
       <SectionLabel color={C.cream}>EVENT DETAILS</SectionLabel>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-7 mt-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-7 mt-4">
         {[{ l: "DATE", v: "4th July" },
           { l: "TIME", v: "12PM to 4PM" },
           { l: "VENUE", v: "Virtual" },
           { l: "PLATFORM", v: "YouTube Live" },
-          { l: "ORGANIZER", v: "Evolve Engine" },
-          { l: "PARTNER", v: "AltSchool" }].map((d) => (
+          { l: "ORGANIZER", v: "Evolve Engine" }].map((d) => (
           <div key={d.l} className="border-l pl-3" style={{ borderColor: `${C.cream}66` }}>
             <div className="text-[9px] tracking-[0.25em] mb-1 opacity-80" style={{ fontFamily: FONT_MONO }}>
               {d.l}
@@ -861,17 +847,12 @@ const FinalCTA = () => (
 const Footer = () => (
   <footer className="py-10" style={{ background: C.navy, color: C.cream }}>
     <div className="max-w-7xl mx-auto px-5 md:px-8">
-      <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <div className="grid md:grid-cols-2 gap-8 mb-8">
         <div>
           <EvolveEngineLogo />
           <p className="mt-3 text-[13px] max-w-xs" style={{ color: C.peri, fontFamily: FONT_BODY }}>
             Programmatic media buying, paid per customer, not per click.
           </p>
-        </div>
-        <div>
-          <div className="text-[10px] tracking-[0.2em] mb-2 font-semibold"
-            style={{ fontFamily: FONT_MONO, color: C.peri }}>IN PARTNERSHIP WITH</div>
-          <AltSchoolLogo />
         </div>
         <div>
           <div className="text-[10px] tracking-[0.2em] mb-2 font-semibold"
