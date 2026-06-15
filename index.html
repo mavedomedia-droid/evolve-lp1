@@ -600,9 +600,9 @@ const Hero = () => (
 );
 
 // ---------- SPEAKERS -------------------------------------------------------
-// UPDATED: using images instead of initials
+// UPDATED: Vibhor is CBO at Admattic, Binjo unchanged. Label now has z-10 to sit above image.
 const SPEAKERS = [
-  { name: "Vibhor", role: "CEO", company: "Raenest", image: "vibhor.jpg" },
+  { name: "Vibhor", role: "CBO", company: "Admattic", image: "vibhor.jpg" },
   { name: "Binjo", role: "Growth Marketing Manager", company: "Featured Speaker", image: "binjo.jpg" },
 ];
 
@@ -617,7 +617,8 @@ const SpeakerCard = ({ s, i }) => (
         className="absolute inset-0 w-full h-full object-cover"
       />
     </div>
-    <div className="-mt-5 ml-3 inline-block px-3 py-2" style={{ background: C.lime }}>
+    {/* Added z-10 relative so the label always sits on top of the image */}
+    <div className="-mt-5 ml-3 inline-block px-3 py-2 relative z-10" style={{ background: C.lime }}>
       <div className="text-[12px] font-bold leading-tight" style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>
         {s.name.toUpperCase()}
       </div>
