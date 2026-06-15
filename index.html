@@ -600,7 +600,8 @@ const Hero = () => (
 );
 
 // ---------- SPEAKERS -------------------------------------------------------
-// UPDATED: Vibhor is CBO at Admattic, Binjo unchanged. Label now has z-10 to sit above image.
+// UPDATED: Vibhor CBO Admattic, Binjo unchanged. Labels have z-10 to sit above image.
+// Grid changed to lg:grid-cols-2 for proper two-column layout on desktop.
 const SPEAKERS = [
   { name: "Vibhor", role: "CBO", company: "Admattic", image: "vibhor.jpg" },
   { name: "Binjo", role: "Growth Marketing Manager", company: "Featured Speaker", image: "binjo.jpg" },
@@ -617,7 +618,7 @@ const SpeakerCard = ({ s, i }) => (
         className="absolute inset-0 w-full h-full object-cover"
       />
     </div>
-    {/* Added z-10 relative so the label always sits on top of the image */}
+    {/* z-10 relative keeps label on top of the image */}
     <div className="-mt-5 ml-3 inline-block px-3 py-2 relative z-10" style={{ background: C.lime }}>
       <div className="text-[12px] font-bold leading-tight" style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>
         {s.name.toUpperCase()}
@@ -643,7 +644,8 @@ const Speakers = () => (
           Operators from companies pushing the boundary of modern marketing.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-9">
+      {/* Changed lg:grid-cols-3 to lg:grid-cols-2 for proper spacing with two speakers */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-7 md:gap-9">
         {SPEAKERS.map((s, i) => <SpeakerCard key={s.name} s={s} i={i} />)}
       </div>
     </div>
