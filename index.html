@@ -600,11 +600,12 @@ const Hero = () => (
 );
 
 // ---------- SPEAKERS -------------------------------------------------------
-// UPDATED: Vibhor CBO Admattic, Binjo unchanged. Labels have z-10 to sit above image.
-// Grid changed to lg:grid-cols-2 for proper two-column layout on desktop.
+// UPDATED: Added Princewill and Kolawole. Grid always 2 columns for compact mobile layout.
 const SPEAKERS = [
   { name: "Vibhor", role: "CBO", company: "Admattic", image: "vibhor.jpg" },
   { name: "Binjo", role: "Growth Marketing Manager", company: "Featured Speaker", image: "binjo.jpg" },
+  { name: "Princewill", role: "Marketing Lead", company: "Featured Speaker", image: "princewill.jpg" },
+  { name: "Kolawole", role: "Growth Expert", company: "Featured Speaker", image: "kolawole.jpg" },
 ];
 
 const SpeakerCard = ({ s, i }) => (
@@ -644,8 +645,8 @@ const Speakers = () => (
           Operators from companies pushing the boundary of modern marketing.
         </p>
       </div>
-      {/* Changed lg:grid-cols-3 to lg:grid-cols-2 for proper spacing with two speakers */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-7 md:gap-9">
+      {/* Always 2 columns to keep scroll short on mobile */}
+      <div className="grid grid-cols-2 gap-7 md:gap-9">
         {SPEAKERS.map((s, i) => <SpeakerCard key={s.name} s={s} i={i} />)}
       </div>
     </div>
