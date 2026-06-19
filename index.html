@@ -5,981 +5,511 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Future of Marketing | Evolve Engine</title>
 <meta name="description" content="A virtual conference on sustainable, predictable acquisition, measured in real customers, not installs or reach. 4th July, 12 to 4PM. Live on YouTube." />
-
-<!-- Open Graph -->
 <meta property="og:title" content="The Future of Marketing" />
 <meta property="og:description" content="Sustainable, predictable acquisition, measured in real customers, not installs or reach. 4th July. Free live class on YouTube." />
 <meta property="og:type" content="website" />
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
-<!-- Tailwind Play CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- React 18 + ReactDOM (production) -->
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
-<!-- Framer Motion (UMD) -->
-<script crossorigin src="https://unpkg.com/framer-motion@11.0.8/dist/framer-motion.js"></script>
-
-<!-- Babel for in-browser JSX (only needed because no build step) -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<!-- ===== Google Tag Manager, replace GTM-XXXXXXX before going live ===== -->
-<script>
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXXX');
-</script>
-<!-- ===== End GTM ===== -->
-
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
 <style>
-  html, body, #root { height: 100%; }
-  body { margin: 0; background: #0A1547; font-family: 'Geist', system-ui, sans-serif; }
-  html { scroll-behavior: smooth; }
-  /* Hide a brief flash before React mounts */
-  #root:empty::before {
-    content: ""; display: block; position: fixed; inset: 0; background: #0A1547;
+  body {
+    margin: 0;
+    background: #0A1547;
+    font-family: 'Geist', system-ui, sans-serif;
+  }
+  .font-display { font-family: 'Bricolage Grotesque', system-ui, sans-serif; }
+  .font-body { font-family: 'Geist', system-ui, sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .pattern-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23A8C8FF' stroke-width='1.3' fill='none' opacity='0.05'%3E%3Cpath d='M0 18 L18 0'/%3E%3Cpath d='M10 0 L18 0 L18 8'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
 </style>
 </head>
-<body>
+<body class="text-[#F5F1E8]">
 
-<!-- GTM noscript fallback -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<div id="root"></div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-5 py-4 flex items-center justify-between max-w-7xl mx-auto" style="background:#0A1547;">
+  <div class="flex items-center gap-2">
+    <svg viewBox="0 0 40 40" width="26" height="26" fill="none">
+      <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#F5F1E8" stroke-width="2"/>
+      <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#F5F1E8" stroke-width="2" transform="rotate(60 20 20)"/>
+      <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#F5F1E8" stroke-width="2" transform="rotate(120 20 20)"/>
+      <circle cx="20" cy="20" r="2.5" fill="#F5F1E8"/>
+    </svg>
+    <div class="leading-[0.95]">
+      <div class="text-[9px] tracking-[0.18em] font-bold text-[#F5F1E8]">EVOLVE</div>
+      <div class="text-[9px] tracking-[0.18em] font-bold text-[#F5F1E8]">ENGINE</div>
+    </div>
+  </div>
+  <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'});" class="px-3.5 py-2 text-[11px] font-bold tracking-[0.1em] bg-[#F5F1E8] text-[#08091F] font-display">
+    REGISTER <svg class="inline w-3 h-3 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </button>
+</nav>
 
-<script type="text/babel" data-presets="env,react">
-const { useState, useEffect, Fragment } = React;
-const { motion, AnimatePresence } = window.Motion || window.FramerMotion || window.framerMotion || window.framer_motion || window["framer-motion"] || window.MotionGlobal || window;
+<!-- Hero Section -->
+<section class="relative pt-24 pb-16 px-5 md:px-8 overflow-hidden pattern-bg" style="background:#0A1547;">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-12 items-start">
+    <div>
+      <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#A8C8FF]">
+        <span class="inline-block w-4 h-px bg-[#A8C8FF]"></span> A VIRTUAL CONFERENCE
+      </div>
+      <h1 class="font-display font-bold text-6xl md:text-8xl leading-[0.9] tracking-[-0.025em]">
+        The Future<br>Of <span class="text-[#C8E84A]">Marketing.</span>
+      </h1>
+      <p class="mt-5 text-base md:text-lg text-[#A8C8FF] max-w-md">
+        Sustainable, predictable acquisition, measured in real customers, not installs or reach.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-mono">
+        <div class="flex items-center gap-1.5"><svg class="w-4 h-4 text-[#A8C8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 4 JUL</div>
+        <div class="w-px h-3 bg-[#A8C8FF] opacity-30"></div>
+        <div class="flex items-center gap-1.5"><svg class="w-4 h-4 text-[#A8C8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 12PM TO 4PM</div>
+        <div class="w-px h-3 bg-[#A8C8FF] opacity-30"></div>
+        <div class="flex items-center gap-1.5"><svg class="w-4 h-4 text-[#A8C8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> YOUTUBE LIVE</div>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'});" class="px-5 py-2.5 font-display font-bold text-sm tracking-[0.1em] bg-[#F5F1E8] text-[#08091F] hover:bg-[#C8E84A] transition-colors">
+          RESERVE YOUR SPOT <svg class="w-4 h-4 ml-1 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </button>
+        <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'});" class="px-5 py-2.5 font-display font-bold text-sm tracking-[0.1em] border border-[#F5F1E8] border-opacity-50 text-[#F5F1E8] hover:border-opacity-100 transition-all">
+          BECOME A SPEAKER
+        </button>
+      </div>
+      <div class="mt-8 pt-4 border-t border-[#A8C8FF] border-opacity-20 flex items-center gap-4">
+        <div class="text-[9px] tracking-[0.25em] font-mono text-[#A8C8FF]">STARTS IN</div>
+        <div id="countdown" class="flex items-center gap-2"></div>
+      </div>
+    </div>
+    <div id="register" class="bg-white text-black p-4 md:p-5 max-w-md"></div>
+  </div>
+</section>
 
-/* =========================================================================
-   THE FUTURE OF MARKETING
-   Evolve Engine
-   ========================================================================= */
+<!-- Speakers Section -->
+<section class="py-16 md:py-20 px-5 md:px-8" style="background:#0A1547;">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
+      <div>
+        <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#A8C8FF]"><span class="inline-block w-4 h-px bg-[#A8C8FF]"></span> FEATURED SPEAKERS</div>
+        <h2 class="text-3xl md:text-5xl font-display font-bold leading-[0.95]">Voices shaping<br><span class="text-[#A8C8FF]">what comes next.</span></h2>
+      </div>
+      <p class="max-w-xs text-sm text-[#A8C8FF]">Operators from companies pushing the boundary of modern marketing.</p>
+    </div>
+    <div id="speakersGrid" class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-9"></div>
+  </div>
+</section>
 
-const EVENT_DATE = new Date("2026-07-04T12:00:00+01:00");
-const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwPy4D8X5NJHRjR2kthlDPlke6ptb7zxzJqvm-p3byYaQc9x-K9UDB7BsNgRRA3s8RUsQ/exec";
+<!-- Why It Matters -->
+<section class="py-16 md:py-20 px-5 md:px-8" style="background:#F5F1E8; color:#08091F;">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr,1.2fr] gap-8">
+    <div>
+      <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#E63946]"><span class="inline-block w-4 h-px bg-[#E63946]"></span> WHY NOW</div>
+      <h2 class="text-3xl md:text-5xl font-display font-bold leading-[0.95]">Why this<br>conversation<br><span class="text-[#E63946]">matters.</span></h2>
+    </div>
+    <div>
+      <p class="text-base leading-relaxed mb-6" style="color:#333;">Reach and installs used to be enough. They aren't anymore. Acquisition costs keep climbing, attribution keeps breaking, and most of what marketers measure has stopped meaning much. Meanwhile, AI and programmatic systems are quietly rewriting how media gets bought, and how growth gets paid for. This conference is about that shift: what actually drives customers, and what working in marketing looks like when the work itself is changing.</p>
+      <div id="topicsPills" class="flex flex-wrap gap-2"></div>
+    </div>
+  </div>
+</section>
 
-const FONT_DISPLAY = "'Bricolage Grotesque', system-ui, sans-serif";
-const FONT_BODY = "'Geist', system-ui, sans-serif";
-const FONT_MONO = "'JetBrains Mono', ui-monospace, monospace";
+<!-- What You'll Take Home -->
+<section class="py-16 md:py-20 px-5 md:px-8 text-center pattern-bg" style="background:#0A1547;">
+  <div class="max-w-4xl mx-auto">
+    <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#A8C8FF]"><span class="inline-block w-4 h-px bg-[#A8C8FF]"></span> WHAT YOU'LL TAKE HOME</div>
+    <h2 class="text-3xl md:text-5xl font-display font-bold leading-[0.95] mb-5">Practical perspectives.<br><span class="text-[#C8E84A]">From people doing the work.</span></h2>
+    <p class="text-base md:text-lg text-[#A8C8FF] max-w-2xl mx-auto">Four hours of conversation with operators who've moved past vanity metrics and built growth systems that actually compound. You'll leave with sharper questions, real frameworks, and a clearer view of where marketing is heading.</p>
+  </div>
+</section>
 
-const C = {
-  navy: "#0A1547",
-  navySoft: "#142158",
-  cream: "#F5F1E8",
-  lime: "#C8E84A",
-  peri: "#A8C8FF",
-  periDeep: "#7BA3E8",
-  red: "#E63946",
-  ink: "#08091F",
-};
+<!-- Event Details -->
+<section class="py-10 md:py-14 px-5 md:px-8 relative" style="background:#E63946;">
+  <div class="absolute inset-0 opacity-15" style="background-image: repeating-linear-gradient(90deg, #F5F1E822 0 1px, transparent 1px 14px);"></div>
+  <div class="relative max-w-7xl mx-auto">
+    <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#F5F1E8]"><span class="inline-block w-4 h-px bg-[#F5F1E8]"></span> EVENT DETAILS</div>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-5 mt-4">
+      <div class="border-l border-[#F5F1E8] border-opacity-50 pl-3"><div class="font-mono text-[9px] tracking-[0.25em] opacity-80 mb-1">DATE</div><div class="font-display font-bold text-lg">4th July</div></div>
+      <div class="border-l border-[#F5F1E8] border-opacity-50 pl-3"><div class="font-mono text-[9px] tracking-[0.25em] opacity-80 mb-1">TIME</div><div class="font-display font-bold text-lg">12PM to 4PM</div></div>
+      <div class="border-l border-[#F5F1E8] border-opacity-50 pl-3"><div class="font-mono text-[9px] tracking-[0.25em] opacity-80 mb-1">VENUE</div><div class="font-display font-bold text-lg">Virtual</div></div>
+      <div class="border-l border-[#F5F1E8] border-opacity-50 pl-3"><div class="font-mono text-[9px] tracking-[0.25em] opacity-80 mb-1">PLATFORM</div><div class="font-display font-bold text-lg">YouTube Live</div></div>
+      <div class="border-l border-[#F5F1E8] border-opacity-50 pl-3"><div class="font-mono text-[9px] tracking-[0.25em] opacity-80 mb-1">ORGANIZER</div><div class="font-display font-bold text-lg">Evolve Engine</div></div>
+    </div>
+  </div>
+</section>
 
-// ---------- Conference topics (placeholder — swap with real list) ---------
+<!-- Who Should Attend -->
+<section class="py-16 md:py-20 px-5 md:px-8" style="background:#F5F1E8; color:#08091F;">
+  <div class="max-w-7xl mx-auto">
+    <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#0A1547]"><span class="inline-block w-4 h-px bg-[#0A1547]"></span> WHO SHOULD ATTEND</div>
+    <h2 class="text-3xl md:text-5xl font-display font-bold leading-[0.95] mb-8">Built for the people<br>building <span class="text-[#E63946]">what's next.</span></h2>
+    <div id="audienceGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16 md:py-20 px-5 md:px-8" style="background:#F5F1E8; color:#08091F;">
+  <div class="max-w-4xl mx-auto">
+    <div class="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3 font-mono text-[#0A1547]"><span class="inline-block w-4 h-px bg-[#0A1547]"></span> FAQ</div>
+    <h2 class="text-3xl md:text-4xl font-display font-bold leading-[0.95] mb-8">Questions, answered.</h2>
+    <div id="faqContainer"></div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="py-16 md:py-20 px-5 md:px-8 text-center pattern-bg" style="background:#08091F;">
+  <div class="max-w-3xl mx-auto">
+    <div id="finalCountdown" class="flex justify-center gap-2 mb-6"></div>
+    <h2 class="text-4xl md:text-7xl font-display font-bold leading-[0.92] tracking-[-0.02em]">Join the<br><span class="text-[#C8E84A]">conversation.</span></h2>
+    <p class="mt-4 text-base text-[#A8C8FF] max-w-xl mx-auto">Reserve your spot and be part of the discussion shaping the future of marketing.</p>
+    <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'});" class="mt-6 px-6 py-3 font-display font-bold text-sm tracking-[0.1em] bg-[#F5F1E8] text-[#08091F] hover:bg-[#C8E84A] transition-colors">
+      REGISTER NOW <svg class="w-4 h-4 ml-1 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 px-5 md:px-8" style="background:#0A1547;">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+    <div>
+      <div class="flex items-center gap-2">
+        <svg viewBox="0 0 40 40" width="26" height="26" fill="none">
+          <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#F5F1E8" stroke-width="2"/>
+          <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#F5F1E8" stroke-width="2" transform="rotate(60 20 20)"/>
+          <ellipse cx="20" cy="20" rx="16" ry="6" stroke="#F5F1E8" stroke-width="2" transform="rotate(120 20 20)"/>
+          <circle cx="20" cy="20" r="2.5" fill="#F5F1E8"/>
+        </svg>
+        <div class="leading-[0.95]">
+          <div class="text-[9px] tracking-[0.18em] font-bold text-[#F5F1E8]">EVOLVE</div>
+          <div class="text-[9px] tracking-[0.18em] font-bold text-[#F5F1E8]">ENGINE</div>
+        </div>
+      </div>
+      <p class="mt-3 text-sm text-[#A8C8FF] max-w-xs">Programmatic media buying, paid per customer, not per click.</p>
+    </div>
+    <div>
+      <div class="font-mono text-[10px] tracking-[0.2em] mb-2 font-semibold text-[#A8C8FF]">CONTACT</div>
+      <a href="mailto:hello@evolveengine.com" class="text-sm hover:underline">hello@useevolvengine.com</a>
+      <div class="flex gap-2 mt-3">
+        <a href="#" class="w-8 h-8 border border-[#A8C8FF] border-opacity-30 flex items-center justify-center text-[#A8C8FF] hover:text-white hover:border-white transition">T</a>
+        <a href="#" class="w-8 h-8 border border-[#A8C8FF] border-opacity-30 flex items-center justify-center text-[#A8C8FF] hover:text-white hover:border-white transition">L</a>
+        <a href="#" class="w-8 h-8 border border-[#A8C8FF] border-opacity-30 flex items-center justify-center text-[#A8C8FF] hover:text-white hover:border-white transition">I</a>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 pt-4 border-t border-[#A8C8FF] border-opacity-20 flex flex-col md:flex-row justify-between gap-2 text-xs font-mono text-[#A8C8FF]">
+    <div>© 2026 EVOLVE ENGINE, ALL RIGHTS RESERVED</div>
+    <div class="tracking-[0.2em]">THE FUTURE OF MARKETING</div>
+  </div>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div id="stickyCTA" class="hidden fixed bottom-0 left-0 right-0 z-40 p-3 md:hidden" style="background: rgba(8,9,31,0.95); backdrop-filter: blur(10px);">
+  <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'});" class="w-full py-3 font-display font-bold text-sm tracking-[0.12em] bg-[#F5F1E8] text-[#08091F]">
+    RESERVE YOUR SPOT <svg class="w-4 h-4 inline ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </button>
+</div>
+
+<!-- Activity Toast -->
+<div id="toast" class="hidden md:block fixed bottom-6 left-6 z-30 opacity-0 transition-opacity duration-500"></div>
+
+<!-- Success Popup (hidden) -->
+<div id="successOverlay" class="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center p-4 hidden" onclick="closeSuccess()">
+  <div class="bg-white max-w-md w-full p-6 relative" onclick="event.stopPropagation()">
+    <button onclick="closeSuccess()" class="absolute top-3 right-3"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="w-10 h-10 rounded-full bg-[#C8E84A] flex items-center justify-center mb-4">
+      <svg class="w-5 h-5 text-[#08091F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3 class="text-xl font-display font-bold text-[#08091F] mb-2" id="successTitle"></h3>
+    <p class="text-sm text-gray-600" id="successMsg"></p>
+    <button onclick="closeSuccess()" class="mt-4 px-4 py-2 font-display font-bold text-xs tracking-wider bg-[#08091F] text-white">CLOSE</button>
+  </div>
+</div>
+
+<script>
+// ========== DATA & GLOBALS ==========
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwPy4D8X5NJHRjR2kthlDPlke6ptb7zxzJqvm-p3byYaQc9x-K9UDB7BsNgRRA3s8RUsQ/exec';
+window.dataLayer = window.dataLayer || [];
+function pushDL(event, data) { dataLayer.push({ event, ...data }); }
+
 const TOPICS = [
-  "AI-Driven Customer Acquisition",
-  "Programmatic Media Buying",
-  "Performance Marketing Fundamentals",
-  "The Modern Marketing Stack",
-  "Sustainable Growth Systems",
-  "Marketing Automation & Workflows",
-  "Attribution & Measurement",
-  "Future Marketing Careers",
+  "AI-Driven Customer Acquisition", "Programmatic Media Buying", "Performance Marketing Fundamentals",
+  "The Modern Marketing Stack", "Sustainable Growth Systems", "Marketing Automation & Workflows",
+  "Attribution & Measurement", "Future Marketing Careers"
 ];
 
-// ---------- helpers --------------------------------------------------------
-function pushDL(event, payload = {}) {
-  if (typeof window === "undefined") return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event, ...payload });
-}
-function scrollToId(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-// ---------- ArrowPattern (SVG motif from the poster) -----------------------
-const ArrowPattern = ({ opacity = 0.05 }) => (
-  <svg aria-hidden="true" width="100%" height="100%"
-    style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-    <defs>
-      <pattern id="arrow-pattern" x="0" y="0" width="56" height="56" patternUnits="userSpaceOnUse">
-        <g stroke={C.peri} strokeWidth="1.3" fill="none" opacity={opacity} transform="translate(18 18)">
-          <path d="M0 18 L18 0" />
-          <path d="M10 0 L18 0 L18 8" />
-        </g>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#arrow-pattern)" />
-  </svg>
-);
-
-// ---------- inline icons ---------------------------------------------------
-const Icon = ({ children, size = 16, color = "currentColor", stroke = 2 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
-    fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round">
-    {children}
-  </svg>
-);
-const ArrowUpRight = (p) => <Icon {...p}><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></Icon>;
-const Calendar = (p) => <Icon {...p}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></Icon>;
-const Clock = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></Icon>;
-const Radio = (p) => <Icon {...p}><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></Icon>;
-const CheckIcon = (p) => <Icon {...p} stroke={3}><polyline points="20 6 9 17 4 12"/></Icon>;
-const X = (p) => <Icon {...p}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></Icon>;
-const Loader = (p) => <Icon {...p}><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></Icon>;
-const Twitter = (p) => <Icon {...p}><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></Icon>;
-const Linkedin = (p) => <Icon {...p}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></Icon>;
-const Instagram = (p) => <Icon {...p}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></Icon>;
-
-// ---------- LOGOS ----------------------------------------------------------
-const EvolveEngineLogo = ({ color = C.cream }) => (
-  <div className="flex items-center gap-2">
-    <svg viewBox="0 0 40 40" width="26" height="26" fill="none">
-      <ellipse cx="20" cy="20" rx="16" ry="6" stroke={color} strokeWidth="2" />
-      <ellipse cx="20" cy="20" rx="16" ry="6" stroke={color} strokeWidth="2" transform="rotate(60 20 20)" />
-      <ellipse cx="20" cy="20" rx="16" ry="6" stroke={color} strokeWidth="2" transform="rotate(120 20 20)" />
-      <circle cx="20" cy="20" r="2.5" fill={color} />
-    </svg>
-    <div className="leading-[0.95]" style={{ fontFamily: FONT_DISPLAY }}>
-      <div className="text-[9px] tracking-[0.18em] font-bold" style={{ color }}>EVOLVE</div>
-      <div className="text-[9px] tracking-[0.18em] font-bold" style={{ color }}>ENGINE</div>
-    </div>
-  </div>
-);
-
-// ---------- COUNTDOWN ------------------------------------------------------
-function useCountdown(target) {
-  const [now, setNow] = useState(() => new Date());
-  useEffect(() => {
-    const t = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const diff = Math.max(0, target.getTime() - now.getTime());
-  return {
-    days: Math.floor(diff / 86400000),
-    hours: Math.floor((diff / 3600000) % 24),
-    minutes: Math.floor((diff / 60000) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
-  };
-}
-
-const Countdown = () => {
-  const t = useCountdown(EVENT_DATE);
-  const units = [
-    { v: t.days, l: "DAYS" },
-    { v: t.hours, l: "HRS" },
-    { v: t.minutes, l: "MIN" },
-    { v: t.seconds, l: "SEC" },
-  ];
-  return (
-    <div className="flex items-center gap-3">
-      {units.map((u, i) => (
-        <Fragment key={u.l}>
-          <div className="flex flex-col items-center">
-            <div className="text-lg md:text-xl font-bold tabular-nums leading-none"
-              style={{ fontFamily: FONT_DISPLAY, color: C.cream }}>
-              {String(u.v).padStart(2, "0")}
-            </div>
-            <div className="text-[8px] md:text-[9px] mt-1 tracking-[0.2em]"
-              style={{ fontFamily: FONT_MONO, color: C.peri }}>
-              {u.l}
-            </div>
-          </div>
-          {i < units.length - 1 && (
-            <div className="text-lg md:text-xl" style={{ color: C.peri, opacity: 0.3 }}>:</div>
-          )}
-        </Fragment>
-      ))}
-    </div>
-  );
-};
-
-// ---------- FORM -----------------------------------------------------------
-const Field = ({ label, error, children, required }) => (
-  <div className="block">
-    <div className="block text-[10px] tracking-[0.15em] mb-1 font-medium"
-      style={{ fontFamily: FONT_MONO, color: C.navy }}>
-      {label} {required && <span style={{ color: C.red }}>*</span>}
-    </div>
-    {children}
-    {error && <span className="block text-xs mt-1" style={{ color: C.red }}>{error}</span>}
-  </div>
-);
-
-const inputClass = "w-full px-3 py-2 bg-white border rounded-none focus:outline-none transition-colors text-[13.5px] text-black placeholder:text-gray-400";
-
-// Multi-select pill picker for attendee "Areas of Interest"
-const TopicPicker = ({ value, onChange, error }) => {
-  const toggle = (t) => {
-    if (value.includes(t)) onChange(value.filter((x) => x !== t));
-    else onChange([...value, t]);
-  };
-  return (
-    <div>
-      <div className="flex flex-wrap gap-1.5">
-        {TOPICS.map((t) => {
-          const active = value.includes(t);
-          return (
-            <button key={t} type="button" onClick={() => toggle(t)}
-              className="px-2.5 py-1.5 text-[11px] font-semibold transition-colors text-left"
-              style={{
-                background: active ? C.ink : "white",
-                color: active ? C.cream : C.ink,
-                border: `1px solid ${active ? C.ink : `${C.ink}33`}`,
-                fontFamily: FONT_MONO,
-              }}>
-              {t}
-            </button>
-          );
-        })}
-      </div>
-      {error && <span className="block text-xs mt-1.5" style={{ color: C.red }}>{error}</span>}
-    </div>
-  );
-};
-
-const RegistrationForm = () => {
-  const [tab, setTab] = useState("attend");
-  const [status, setStatus] = useState("idle");
-  const [errors, setErrors] = useState({});
-  const [form, setForm] = useState({
-    full_name: "", email: "", phone: "",
-    linkedin_url: "", city: "",
-    areas_of_interest: [],
-    role: "",
-    organization: "", proposed_topic: "", bio: "", portfolio_url: "",
-  });
-
-  const update = (k) => (e) => {
-    setForm((s) => ({ ...s, [k]: e.target.value }));
-    if (errors[k]) setErrors((er) => ({ ...er, [k]: undefined }));
-  };
-  const updateTopics = (arr) => {
-    setForm((s) => ({ ...s, areas_of_interest: arr }));
-    if (errors.areas_of_interest) setErrors((er) => ({ ...er, areas_of_interest: undefined }));
-  };
-
-  const validate = () => {
-    const e = {};
-    if (!form.full_name.trim()) e.full_name = "Required";
-    if (!form.email.trim()) e.email = "Required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email";
-    if (!form.phone.trim()) e.phone = "Required";
-
-    if (tab === "attend") {
-      if (!form.linkedin_url.trim()) e.linkedin_url = "Required";
-      else if (!/linkedin\.com\//i.test(form.linkedin_url)) e.linkedin_url = "Enter a valid LinkedIn URL";
-      if (form.areas_of_interest.length === 0) e.areas_of_interest = "Pick at least one topic";
-    } else {
-      if (!form.role.trim()) e.role = "Required";
-      if (!form.organization.trim()) e.organization = "Required";
-      if (!form.proposed_topic.trim()) e.proposed_topic = "Pick a topic";
-      if (!form.bio.trim()) e.bio = "Required";
-      if (!form.portfolio_url.trim()) e.portfolio_url = "Required";
-    }
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const submit = async (ev) => {
-    ev.preventDefault();
-    if (!validate()) return;
-    setStatus("loading");
-
-    const payload = tab === "attend"
-      ? { registration_type: "attendee",
-          full_name: form.full_name, email: form.email, phone: form.phone,
-          linkedin_url: form.linkedin_url,
-          areas_of_interest: form.areas_of_interest.join(", "),
-          city: form.city,
-          timestamp: new Date().toISOString() }
-      : { registration_type: "speaker",
-          full_name: form.full_name, email: form.email, phone: form.phone,
-          role: form.role, organization: form.organization,
-          proposed_topic: form.proposed_topic, bio: form.bio,
-          portfolio_url: form.portfolio_url,
-          timestamp: new Date().toISOString() };
-
-    try {
-      await fetch(GAS_ENDPOINT, {
-        method: "POST", mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload),
-      });
-      pushDL(tab === "attend" ? "conference_registration" : "speaker_application");
-      setStatus("success");
-    } catch { setStatus("error"); }
-  };
-
-  const closeSuccess = () => {
-    setStatus("idle");
-    setForm({ full_name: "", email: "", phone: "",
-      linkedin_url: "", city: "", areas_of_interest: [],
-      role: "", organization: "", proposed_topic: "", bio: "", portfolio_url: "" });
-  };
-
-  return (
-    <div id="register" className="relative" style={{ fontFamily: FONT_BODY }}>
-      <div className="bg-white border" style={{ borderColor: `${C.ink}22` }}>
-        <div className="grid grid-cols-2" style={{ borderBottom: `1px solid ${C.ink}22` }}>
-          {[{ id: "attend", label: "Attend Conference" },
-            { id: "speaker", label: "Become A Speaker" }].map((t) => {
-            const active = tab === t.id;
-            return (
-              <button key={t.id} type="button"
-                onClick={() => { setTab(t.id); setErrors({}); }}
-                className="relative py-3 text-[12.5px] font-semibold tracking-wide transition-colors"
-                style={{ background: active ? C.ink : "white",
-                  color: active ? C.cream : `${C.ink}88`,
-                  fontFamily: FONT_DISPLAY }}>
-                {t.label}
-              </button>
-            );
-          })}
-        </div>
-
-        <form onSubmit={submit} className="p-4 md:p-5 space-y-3" noValidate>
-          <Field label="FULL NAME" required error={errors.full_name}>
-            <input type="text" className={inputClass}
-              style={{ borderColor: errors.full_name ? C.red : `${C.ink}33` }}
-              value={form.full_name} onChange={update("full_name")} autoComplete="name" />
-          </Field>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <Field label="EMAIL" required error={errors.email}>
-              <input type="email" className={inputClass}
-                style={{ borderColor: errors.email ? C.red : `${C.ink}33` }}
-                value={form.email} onChange={update("email")}
-                autoComplete="email" inputMode="email" />
-            </Field>
-            <Field label="PHONE" required error={errors.phone}>
-              <input type="tel" className={inputClass}
-                style={{ borderColor: errors.phone ? C.red : `${C.ink}33` }}
-                value={form.phone} onChange={update("phone")}
-                autoComplete="tel" inputMode="tel" />
-            </Field>
-          </div>
-
-          {tab === "attend" ? (
-            <Fragment>
-              <Field label="LINKEDIN URL" required error={errors.linkedin_url}>
-                <input type="url" className={inputClass}
-                  style={{ borderColor: errors.linkedin_url ? C.red : `${C.ink}33` }}
-                  value={form.linkedin_url} onChange={update("linkedin_url")}
-                  placeholder="https://linkedin.com/in/yourname" />
-              </Field>
-
-              <Field label="AREAS OF INTEREST (PICK ONE OR MORE)" required error={errors.areas_of_interest}>
-                <TopicPicker value={form.areas_of_interest} onChange={updateTopics} />
-              </Field>
-
-              <Field label="CITY (OPTIONAL)">
-                <input type="text" className={inputClass}
-                  style={{ borderColor: `${C.ink}33` }}
-                  value={form.city} onChange={update("city")} placeholder="e.g. Lagos" />
-              </Field>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <Field label="CURRENT ROLE" required error={errors.role}>
-                <input type="text" className={inputClass}
-                  style={{ borderColor: errors.role ? C.red : `${C.ink}33` }}
-                  value={form.role} onChange={update("role")}
-                  placeholder="e.g. Head of Growth" />
-              </Field>
-              <Field label="ORGANIZATION" required error={errors.organization}>
-                <input type="text" className={inputClass}
-                  style={{ borderColor: errors.organization ? C.red : `${C.ink}33` }}
-                  value={form.organization} onChange={update("organization")} />
-              </Field>
-              <Field label="PROPOSED TOPIC" required error={errors.proposed_topic}>
-                <select className={inputClass}
-                  style={{ borderColor: errors.proposed_topic ? C.red : `${C.ink}33`, appearance: "none", backgroundImage: `linear-gradient(45deg, transparent 50%, ${C.ink} 50%), linear-gradient(135deg, ${C.ink} 50%, transparent 50%)`, backgroundPosition: `calc(100% - 14px) 50%, calc(100% - 9px) 50%`, backgroundSize: `5px 5px, 5px 5px`, backgroundRepeat: "no-repeat", paddingRight: "28px" }}
-                  value={form.proposed_topic} onChange={update("proposed_topic")}>
-                  <option value="">Select a topic...</option>
-                  {TOPICS.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </select>
-              </Field>
-              <Field label="SHORT BIO" required error={errors.bio}>
-                <textarea className={inputClass}
-                  style={{ borderColor: errors.bio ? C.red : `${C.ink}33`, minHeight: 80 }}
-                  value={form.bio} onChange={update("bio")} rows={3} />
-              </Field>
-              <Field label="PORTFOLIO / LINKEDIN URL" required error={errors.portfolio_url}>
-                <input type="url" className={inputClass}
-                  style={{ borderColor: errors.portfolio_url ? C.red : `${C.ink}33` }}
-                  value={form.portfolio_url} onChange={update("portfolio_url")}
-                  placeholder="https://" />
-              </Field>
-            </Fragment>
-          )}
-
-          <motion.button type="submit" disabled={status === "loading"}
-            whileTap={{ scale: 0.98 }}
-            className="w-full py-3 px-6 font-bold text-[12.5px] tracking-[0.12em] flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
-            style={{ background: C.ink, color: C.cream, fontFamily: FONT_DISPLAY }}>
-            {status === "loading" ? (
-              <Fragment><Loader size={14} className="animate-spin" /> SUBMITTING…</Fragment>
-            ) : (
-              <Fragment>
-                {tab === "attend" ? "REGISTER FOR FREE" : "APPLY AS SPEAKER"}
-                <ArrowUpRight size={15} />
-              </Fragment>
-            )}
-          </motion.button>
-
-          {tab === "attend" && (
-            <p className="text-[10.5px] text-center" style={{ color: `${C.ink}88`, fontFamily: FONT_MONO }}>
-              LIVE ATTENDANCE IS FREE. RECORDED VERSION SOLD SEPARATELY.
-            </p>
-          )}
-
-          {status === "error" && (
-            <div className="text-xs p-2 text-center" style={{ background: `${C.red}11`, color: C.red }}>
-              Something went wrong. Please try again.
-            </div>
-          )}
-        </form>
-      </div>
-
-      <AnimatePresence>
-        {status === "success" && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            style={{ background: "rgba(8,9,31,0.85)" }} onClick={closeSuccess}>
-            <motion.div initial={{ scale: 0.95, y: 10 }} animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 10 }} transition={{ type: "spring", damping: 22 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-md w-full bg-white p-6" style={{ fontFamily: FONT_BODY }}>
-              <button onClick={closeSuccess} className="absolute top-3 right-3 p-1" aria-label="Close">
-                <X size={18} />
-              </button>
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4"
-                style={{ background: C.lime }}>
-                <CheckIcon size={20} color={C.ink} />
-              </div>
-              <h3 className="text-xl mb-2 font-bold" style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>
-                {tab === "attend" ? "You're in. See you on July 4th." : "Application received."}
-              </h3>
-              <p className="text-[13.5px] leading-relaxed" style={{ color: "#444" }}>
-                {tab === "attend"
-                  ? "We've saved your spot. A confirmation with the YouTube Live link is on its way to your inbox."
-                  : "Thanks for proposing to speak. We'll review your submission and get back to you over email within a few days."}
-              </p>
-              <button onClick={closeSuccess}
-                className="mt-4 px-4 py-2 font-semibold text-xs tracking-wider"
-                style={{ background: C.ink, color: C.cream, fontFamily: FONT_DISPLAY }}>
-                CLOSE
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-// ---------- SectionLabel ---------------------------------------------------
-const SectionLabel = ({ children, color = C.peri }) => (
-  <div className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] font-semibold mb-3"
-    style={{ fontFamily: FONT_MONO, color }}>
-    <span className="inline-block w-4 h-px" style={{ background: color }} />
-    {children}
-  </div>
-);
-
-// ---------- HERO -----------------------------------------------------------
-const Hero = () => (
-  <section id="hero" className="relative overflow-hidden" style={{ background: C.navy, color: C.cream }}>
-    <ArrowPattern opacity={0.05} />
-    <div aria-hidden className="absolute -top-40 -left-40 w-[450px] h-[450px] rounded-full pointer-events-none"
-      style={{ background: `radial-gradient(circle, ${C.periDeep}22 0%, transparent 70%)`, filter: "blur(40px)" }} />
-
-    <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-5 pb-10 md:pt-6 md:pb-14">
-      <nav className="flex items-center justify-between mb-7 md:mb-9">
-        <EvolveEngineLogo />
-        <button onClick={() => { pushDL("cta_click", { cta: "nav_register" }); scrollToId("register"); }}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold tracking-[0.1em] transition-colors"
-          style={{ background: C.cream, color: C.ink, fontFamily: FONT_DISPLAY }}>
-          REGISTER <ArrowUpRight size={13} />
-        </button>
-      </nav>
-
-      <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-12 items-start">
-        <div>
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <SectionLabel color={C.peri}>A VIRTUAL CONFERENCE</SectionLabel>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.08 }}
-            className="font-bold leading-[0.9] tracking-[-0.025em]"
-            style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2.75rem, 8vw, 6rem)" }}>
-            The Future<br />Of <span style={{ color: C.lime }}>Marketing.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.16 }}
-            className="mt-4 md:mt-5 text-[15px] md:text-base leading-snug max-w-md"
-            style={{ color: C.peri, fontFamily: FONT_BODY }}>
-            Sustainable, predictable acquisition, measured in real customers, not installs or reach.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.22 }}
-            className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[12.5px]"
-            style={{ fontFamily: FONT_MONO }}>
-            <div className="flex items-center gap-1.5" style={{ color: C.cream }}>
-              <Calendar size={12} color={C.peri} />
-              <span className="tracking-wide">4 JUL</span>
-            </div>
-            <div className="w-px h-3" style={{ background: `${C.peri}44` }} />
-            <div className="flex items-center gap-1.5" style={{ color: C.cream }}>
-              <Clock size={12} color={C.peri} />
-              <span className="tracking-wide">12PM TO 4PM</span>
-            </div>
-            <div className="w-px h-3" style={{ background: `${C.peri}44` }} />
-            <div className="flex items-center gap-1.5" style={{ color: C.cream }}>
-              <Radio size={12} color={C.peri} />
-              <span className="tracking-wide">YOUTUBE LIVE</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.28 }}
-            className="mt-5 flex flex-wrap items-center gap-3">
-            <button onClick={() => { pushDL("cta_click", { cta: "hero_primary" }); scrollToId("register"); }}
-              className="group inline-flex items-center gap-2 px-5 py-2.5 font-bold text-[12.5px] tracking-[0.1em] transition-colors"
-              style={{ background: C.cream, color: C.ink, fontFamily: FONT_DISPLAY }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = C.lime; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = C.cream; }}>
-              RESERVE YOUR SPOT <ArrowUpRight size={15} />
-            </button>
-            <button onClick={() => { pushDL("cta_click", { cta: "hero_secondary" }); scrollToId("register"); }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-[12.5px] tracking-[0.1em] border transition-colors"
-              style={{ borderColor: `${C.cream}55`, color: C.cream, fontFamily: FONT_DISPLAY, background: "transparent" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.cream; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${C.cream}55`; }}>
-              BECOME A SPEAKER
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            transition={{ duration: 0.55, delay: 0.4 }}
-            className="mt-7 pt-4 border-t flex items-center gap-4"
-            style={{ borderColor: `${C.peri}22` }}>
-            <div className="text-[9px] tracking-[0.25em] flex-shrink-0"
-              style={{ fontFamily: FONT_MONO, color: C.peri }}>STARTS IN</div>
-            <Countdown />
-          </motion.div>
-        </div>
-
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.25 }}>
-          <RegistrationForm />
-        </motion.div>
-      </div>
-    </div>
-  </section>
-);
-
-// ---------- SPEAKERS -------------------------------------------------------
-// UPDATED: Added Princewill and Kolawole. Grid always 2 columns for compact mobile layout.
+// ✅ Updated speaker details
 const SPEAKERS = [
   { name: "Vibhor", role: "CBO", company: "Admattic", image: "vibhor.jpg" },
   { name: "Binjo", role: "Growth Marketing Manager", company: "Featured Speaker", image: "binjo.jpg" },
-  { name: "Princewill", role: "Marketing Lead", company: "Featured Speaker", image: "princewill.jpg" },
-  { name: "Kolawole", role: "Growth Expert", company: "Featured Speaker", image: "kolawole.jpg" },
+  { name: "Princewill", role: "Growth and Product Marketing Manager", company: "Featured Speaker", image: "princewill.jpg" },
+  { name: "Kolawole", role: "Country Manager", company: "Glovo (Uganda)", image: "kolawole.jpg" }
 ];
 
-const SpeakerCard = ({ s, i }) => (
-  <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.45, delay: i * 0.08 }} className="group">
-    <div className="relative aspect-[3/4] overflow-hidden" style={{ background: C.peri }}>
-      <img
-        src={s.image}
-        alt={s.name}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-    </div>
-    {/* z-10 relative keeps label on top of the image */}
-    <div className="-mt-5 ml-3 inline-block px-3 py-2 relative z-10" style={{ background: C.lime }}>
-      <div className="text-[12px] font-bold leading-tight" style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>
-        {s.name.toUpperCase()}
-      </div>
-      <div className="text-[10px] mt-0.5" style={{ fontFamily: FONT_MONO, color: C.ink }}>
-        {s.role}, {s.company}
-      </div>
-    </div>
-  </motion.div>
-);
-
-const Speakers = () => (
-  <section id="speakers" className="relative py-14 md:py-20" style={{ background: C.navy, color: C.cream }}>
-    <div className="max-w-7xl mx-auto px-5 md:px-8">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
-        <div>
-          <SectionLabel>FEATURED SPEAKERS</SectionLabel>
-          <h2 className="text-3xl md:text-5xl font-bold leading-[0.95]" style={{ fontFamily: FONT_DISPLAY }}>
-            Voices shaping<br /><span style={{ color: C.peri }}>what comes next.</span>
-          </h2>
-        </div>
-        <p className="max-w-xs text-[13.5px]" style={{ color: C.peri, fontFamily: FONT_BODY }}>
-          Operators from companies pushing the boundary of modern marketing.
-        </p>
-      </div>
-      {/* Always 2 columns to keep scroll short on mobile */}
-      <div className="grid grid-cols-2 gap-7 md:gap-9">
-        {SPEAKERS.map((s, i) => <SpeakerCard key={s.name} s={s} i={i} />)}
-      </div>
-    </div>
-  </section>
-);
-
-// ---------- WHY IT MATTERS -------------------------------------------------
-const WhyItMatters = () => (
-  <section className="relative py-14 md:py-20" style={{ background: C.cream, color: C.ink }}>
-    <div className="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-[1fr,1.2fr] gap-8 lg:gap-14 items-start">
-      <div>
-        <SectionLabel color={C.red}>WHY NOW</SectionLabel>
-        <h2 className="text-3xl md:text-5xl font-bold leading-[0.95]" style={{ fontFamily: FONT_DISPLAY }}>
-          Why this<br />conversation<br /><span style={{ color: C.red }}>matters.</span>
-        </h2>
-      </div>
-      <div>
-        <p className="text-base leading-relaxed mb-6" style={{ fontFamily: FONT_BODY, color: "#333" }}>
-          Reach and installs used to be enough. They aren't anymore. Acquisition
-          costs keep climbing, attribution keeps breaking, and most of what
-          marketers measure has stopped meaning much. Meanwhile, AI and
-          programmatic systems are quietly rewriting how media gets bought,
-          and how growth gets paid for. This conference is about that shift:
-          what actually drives customers, and what working in marketing looks
-          like when the work itself is changing.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {TOPICS.map((t) => (
-            <span key={t} className="px-3 py-1.5 text-[11px] font-semibold border"
-              style={{ borderColor: `${C.ink}44`, fontFamily: FONT_MONO, color: C.ink }}>{t}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-// ---------- WHAT YOU'LL TAKE HOME ------------------------------------------
-const WhatYoullLearn = () => (
-  <section id="learn" className="relative py-14 md:py-20 overflow-hidden"
-    style={{ background: C.navy, color: C.cream }}>
-    <ArrowPattern opacity={0.04} />
-    <div className="relative max-w-4xl mx-auto px-5 md:px-8 text-center">
-      <SectionLabel>WHAT YOU'LL TAKE HOME</SectionLabel>
-      <h2 className="text-3xl md:text-5xl font-bold leading-[0.95] mb-5"
-        style={{ fontFamily: FONT_DISPLAY }}>
-        Practical perspectives.<br />
-        <span style={{ color: C.lime }}>From people doing the work.</span>
-      </h2>
-      <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
-        style={{ color: C.peri, fontFamily: FONT_BODY }}>
-        Four hours of conversation with operators who've moved past vanity
-        metrics and built growth systems that actually compound. You'll leave
-        with sharper questions, real frameworks, and a clearer view of where
-        marketing is heading.
-      </p>
-    </div>
-  </section>
-);
-
-// ---------- EVENT DETAILS --------------------------------------------------
-const EventDetails = () => (
-  <section id="details" className="relative py-10 md:py-14" style={{ background: C.red, color: C.cream }}>
-    <div aria-hidden className="absolute inset-0 opacity-15"
-      style={{ backgroundImage: `repeating-linear-gradient(90deg, ${C.cream}22 0 1px, transparent 1px 14px)` }} />
-    <div className="relative max-w-7xl mx-auto px-5 md:px-8">
-      <SectionLabel color={C.cream}>EVENT DETAILS</SectionLabel>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-7 mt-4">
-        {[{ l: "DATE", v: "4th July" },
-          { l: "TIME", v: "12PM to 4PM" },
-          { l: "VENUE", v: "Virtual" },
-          { l: "PLATFORM", v: "YouTube Live" },
-          { l: "ORGANIZER", v: "Evolve Engine" }].map((d) => (
-          <div key={d.l} className="border-l pl-3" style={{ borderColor: `${C.cream}66` }}>
-            <div className="text-[9px] tracking-[0.25em] mb-1 opacity-80" style={{ fontFamily: FONT_MONO }}>
-              {d.l}
-            </div>
-            <div className="text-base md:text-lg font-bold leading-tight" style={{ fontFamily: FONT_DISPLAY }}>
-              {d.v}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-// ---------- WHO SHOULD ATTEND ----------------------------------------------
-const AUDIENCE = ["Marketers", "Founders", "Creators", "Students", "Tech Professionals",
-  "Freelancers", "Product Teams", "Growth Strategists", "Aspiring Marketers"];
-
-const WhoShouldAttend = () => (
-  <section className="relative py-14 md:py-20" style={{ background: C.cream, color: C.ink }}>
-    <div className="max-w-7xl mx-auto px-5 md:px-8">
-      <div className="max-w-3xl mb-8">
-        <SectionLabel color={C.navy}>WHO SHOULD ATTEND</SectionLabel>
-        <h2 className="text-3xl md:text-5xl font-bold leading-[0.95]" style={{ fontFamily: FONT_DISPLAY }}>
-          Built for the people<br />
-          building <span style={{ color: C.red }}>what's next.</span>
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {AUDIENCE.map((a, i) => (
-          <motion.div key={a} initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: i * 0.04 }}
-            className="group flex items-center justify-between px-4 py-3 cursor-default transition-colors"
-            style={{ background: "white", border: `1px solid ${C.ink}22` }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = C.ink; e.currentTarget.style.color = C.cream; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "white"; e.currentTarget.style.color = C.ink; }}>
-            <span className="text-base font-bold" style={{ fontFamily: FONT_DISPLAY }}>{a}</span>
-            <ArrowUpRight size={16} />
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-// ---------- FAQ ------------------------------------------------------------
+const AUDIENCE_LIST = ["Marketers","Founders","Creators","Students","Tech Professionals","Freelancers","Product Teams","Growth Strategists","Aspiring Marketers"];
 const FAQS = [
-  { q: "Is the live class free?", a: "Yes. The live class on July 4th is completely free to attend on YouTube Live. Just register your spot and you're in." },
-  { q: "Will I receive the link by email?", a: "Yes. Once you register, a confirmation email goes out immediately. The YouTube Live link is sent ahead of the event." },
-  { q: "Will the session be recorded?", a: "Yes. The live class is free, but the recorded version is sold separately as a paid product for those who can't attend live or want to revisit the material." },
-  { q: "Is the conference beginner friendly?", a: "Yes. Sessions are designed to be useful whether you're three months or ten years into your marketing career." },
-  { q: "Can I apply to become a speaker?", a: "Yes, use the 'Become A Speaker' tab on the registration form. Pick your proposed topic from the list, add a short bio and portfolio link, and we'll review." },
-  { q: "How do I join the live class?", a: "You'll receive the YouTube Live link by email after you've registered. Click it at the event start time on July 4th." },
+  {q:"Is the live class free?",a:"Yes. The live class on July 4th is completely free to attend on YouTube Live. Just register your spot and you're in."},
+  {q:"Will I receive the link by email?",a:"Yes. Once you register, a confirmation email goes out immediately. The YouTube Live link is sent ahead of the event."},
+  {q:"Will the session be recorded?",a:"Yes. The live class is free, but the recorded version is sold separately as a paid product for those who can't attend live or want to revisit the material."},
+  {q:"Is the conference beginner friendly?",a:"Yes. Sessions are designed to be useful whether you're three months or ten years into your marketing career."},
+  {q:"Can I apply to become a speaker?",a:"Yes, use the 'Become A Speaker' tab on the registration form. Pick your proposed topic from the list, add a short bio and portfolio link, and we'll review."},
+  {q:"How do I join the live class?",a:"You'll receive the YouTube Live link by email after you've registered. Click it at the event start time on July 4th."}
 ];
 
-const FAQItem = ({ q, a, isOpen, onToggle }) => (
-  <div className="border-b" style={{ borderColor: `${C.ink}1a` }}>
-    <button onClick={onToggle}
-      className="w-full flex items-center justify-between gap-4 py-4 text-left"
-      aria-expanded={isOpen}>
-      <span className="text-base font-bold leading-tight"
-        style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>{q}</span>
-      <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.2 }}
-        className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
-        style={{ background: isOpen ? C.ink : "transparent", border: `1px solid ${C.ink}` }}>
-        <span style={{ color: isOpen ? C.cream : C.ink, fontSize: 16, lineHeight: 1 }}>+</span>
-      </motion.span>
-    </button>
-    <AnimatePresence initial={false}>
-      {isOpen && (
-        <motion.div initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.25 }} className="overflow-hidden">
-          <p className="pb-4 pr-10 text-[13.5px] leading-relaxed"
-            style={{ color: "#444", fontFamily: FONT_BODY }}>{a}</p>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-);
+// ========== COUNTDOWN ==========
+const eventDate = new Date("2026-07-04T12:00:00+01:00").getTime();
+function updateCountdowns() {
+  const now = Date.now();
+  const diff = Math.max(0, eventDate - now);
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff/3600000)%24);
+  const m = Math.floor((diff/60000)%60);
+  const s = Math.floor((diff/1000)%60);
+  const units = [{v:d,l:'DAYS'},{v:h,l:'HRS'},{v:m,l:'MIN'},{v:s,l:'SEC'}];
+  const html = units.map((u,i) => `<div class="flex flex-col items-center"><span class="text-lg md:text-xl font-display font-bold tabular-nums">${String(u.v).padStart(2,'0')}</span><span class="text-[8px] md:text-[9px] mt-1 font-mono tracking-[0.2em] text-[#A8C8FF]">${u.l}</span></div>${i<3?'<span class="text-lg md:text-xl text-[#A8C8FF] opacity-30">:</span>':''}`).join('');
+  document.getElementById('countdown').innerHTML = html;
+  document.getElementById('finalCountdown').innerHTML = html;
+}
+updateCountdowns();
+setInterval(updateCountdowns, 1000);
 
-const FAQ = () => {
-  const [open, setOpen] = useState(0);
-  return (
-    <section id="faq" className="py-14 md:py-20" style={{ background: C.cream }}>
-      <div className="max-w-4xl mx-auto px-5 md:px-8">
-        <SectionLabel color={C.navy}>FAQ</SectionLabel>
-        <h2 className="text-3xl md:text-4xl font-bold leading-[0.95] mb-8"
-          style={{ fontFamily: FONT_DISPLAY, color: C.ink }}>Questions, answered.</h2>
-        <div>
-          {FAQS.map((f, i) => (
-            <FAQItem key={f.q} q={f.q} a={f.a} isOpen={open === i}
-              onToggle={() => setOpen(open === i ? -1 : i)} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+// ========== SPEAKERS GRID ==========
+document.getElementById('speakersGrid').innerHTML = SPEAKERS.map(s => `
+  <div class="group">
+    <div class="relative aspect-[3/4] overflow-hidden bg-[#A8C8FF]">
+      <img src="${s.image}" alt="${s.name}" class="absolute inset-0 w-full h-full object-cover"/>
+    </div>
+    <div class="-mt-5 ml-3 inline-block px-3 py-2 relative z-10 bg-[#C8E84A]">
+      <div class="text-[12px] font-display font-bold text-[#08091F]">${s.name.toUpperCase()}</div>
+      <div class="text-[10px] mt-0.5 font-mono text-[#08091F]">${s.role}, ${s.company}</div>
+    </div>
+  </div>
+`).join('');
+
+// ========== TOPICS PILLS ==========
+document.getElementById('topicsPills').innerHTML = TOPICS.map(t => `<span class="px-3 py-1.5 text-[11px] font-semibold border border-[#08091F] border-opacity-30 font-mono">${t}</span>`).join('');
+
+// ========== AUDIENCE GRID ==========
+document.getElementById('audienceGrid').innerHTML = AUDIENCE_LIST.map(a => `
+  <div class="group flex items-center justify-between px-4 py-3 bg-white border border-[#08091F] border-opacity-20 hover:bg-[#08091F] hover:text-white transition-colors cursor-default">
+    <span class="text-base font-display font-bold">${a}</span>
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </div>
+`).join('');
+
+// ========== FAQ ==========
+document.getElementById('faqContainer').innerHTML = FAQS.map(f => `
+  <div class="border-b border-[#08091F] border-opacity-20">
+    <button class="w-full flex items-center justify-between gap-4 py-4 text-left font-display text-base font-bold" onclick="this.parentElement.classList.toggle('open')">
+      <span>${f.q}</span>
+      <span class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center border border-[#08091F] transition-transform" style="transform: rotate(0deg);"><span>+</span></span>
+    </button>
+    <div class="answer hidden pb-4 pr-10 text-sm" style="color:#444;">${f.a}</div>
+  </div>
+`).join('');
+
+document.querySelectorAll('#faqContainer button').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const parent = this.parentElement;
+    const answer = parent.querySelector('.answer');
+    const icon = this.querySelector('.flex-shrink-0');
+    parent.classList.toggle('open');
+    if (parent.classList.contains('open')) {
+      answer.classList.remove('hidden');
+      icon.style.transform = 'rotate(45deg)';
+      icon.style.background = '#08091F';
+      icon.querySelector('span').style.color = 'white';
+    } else {
+      answer.classList.add('hidden');
+      icon.style.transform = 'rotate(0deg)';
+      icon.style.background = 'transparent';
+      icon.querySelector('span').style.color = '#08091F';
+    }
+  });
+});
+
+// ========== REGISTRATION FORM ==========
+let regTab = 'attend';
+let regForm = {
+  full_name:'', email:'', phone:'', linkedin_url:'', city:'',
+  areas_of_interest:[],
+  role:'', organization:'', proposed_topic:'', bio:'', portfolio_url:''
 };
 
-// ---------- FINAL CTA ------------------------------------------------------
-const FinalCTA = () => (
-  <section className="relative py-14 md:py-20 overflow-hidden" style={{ background: C.ink, color: C.cream }}>
-    <ArrowPattern opacity={0.05} />
-    <div className="relative max-w-3xl mx-auto px-5 md:px-8 text-center">
-      <div className="flex justify-center"><Countdown /></div>
-      <h2 className="mt-6 font-bold leading-[0.92] tracking-[-0.02em]"
-        style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2.25rem, 6vw, 4.5rem)" }}>
-        Join the<br /><span style={{ color: C.lime }}>conversation.</span>
-      </h2>
-      <p className="mt-4 text-base max-w-xl mx-auto" style={{ color: C.peri, fontFamily: FONT_BODY }}>
-        Reserve your spot and be part of the discussion shaping the future of marketing.
-      </p>
-      <button onClick={() => { pushDL("cta_click", { cta: "final_cta" }); scrollToId("register"); }}
-        className="group mt-6 inline-flex items-center gap-2 px-6 py-3 font-bold text-[12.5px] tracking-[0.12em] transition-colors"
-        style={{ background: C.cream, color: C.ink, fontFamily: FONT_DISPLAY }}
-        onMouseEnter={(e) => { e.currentTarget.style.background = C.lime; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = C.cream; }}>
-        REGISTER NOW <ArrowUpRight size={16} />
-      </button>
-    </div>
-  </section>
-);
-
-// ---------- FOOTER ---------------------------------------------------------
-const Footer = () => (
-  <footer className="py-10" style={{ background: C.navy, color: C.cream }}>
-    <div className="max-w-7xl mx-auto px-5 md:px-8">
-      <div className="grid md:grid-cols-2 gap-8 mb-8">
+function renderForm() {
+  const container = document.getElementById('register');
+  container.innerHTML = `
+    <div class="bg-white border border-gray-200">
+      <div class="grid grid-cols-2 border-b border-gray-200">
+        <button class="py-3 text-[12.5px] font-display font-semibold tracking-wide ${regTab==='attend'?'bg-[#08091F] text-[#F5F1E8]':'bg-white text-gray-500'} transition-colors" onclick="switchTab('attend')">Attend Conference</button>
+        <button class="py-3 text-[12.5px] font-display font-semibold tracking-wide ${regTab==='speaker'?'bg-[#08091F] text-[#F5F1E8]':'bg-white text-gray-500'} transition-colors" onclick="switchTab('speaker')">Become A Speaker</button>
+      </div>
+      <form id="regForm" class="p-4 md:p-5 space-y-3" onsubmit="submitForm(event)">
         <div>
-          <EvolveEngineLogo />
-          <p className="mt-3 text-[13px] max-w-xs" style={{ color: C.peri, fontFamily: FONT_BODY }}>
-            Programmatic media buying, paid per customer, not per click.
-          </p>
+          <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">FULL NAME <span class="text-red-500">*</span></label>
+          <input type="text" id="full_name" class="w-full px-3 py-2 border text-[13.5px]" style="border-color:#ccc;" value="${regForm.full_name}" />
         </div>
-        <div>
-          <div className="text-[10px] tracking-[0.2em] mb-2 font-semibold"
-            style={{ fontFamily: FONT_MONO, color: C.peri }}>CONTACT</div>
-          <a href="mailto:hello@evolveengine.com" className="text-sm hover:underline"
-            style={{ fontFamily: FONT_BODY, color: C.cream }}>hello@useevolvengine.com</a>
-          <div className="flex gap-2 mt-3">
-            {[Twitter, Linkedin, Instagram].map((Ic, i) => (
-              <a key={i} href="#" aria-label="social"
-                className="w-8 h-8 border flex items-center justify-center transition-colors"
-                style={{ borderColor: `${C.peri}33`, color: C.peri }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = C.cream; e.currentTarget.style.borderColor = C.cream; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = C.peri; e.currentTarget.style.borderColor = `${C.peri}33`; }}>
-                <Ic size={14} />
-              </a>
-            ))}
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">EMAIL <span class="text-red-500">*</span></label>
+            <input type="email" id="email" class="w-full px-3 py-2 border text-[13.5px]" style="border-color:#ccc;" value="${regForm.email}" />
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">PHONE <span class="text-red-500">*</span></label>
+            <input type="tel" id="phone" class="w-full px-3 py-2 border text-[13.5px]" style="border-color:#ccc;" value="${regForm.phone}" />
           </div>
         </div>
-      </div>
-      <div className="pt-4 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-[11px]"
-        style={{ borderColor: `${C.peri}22`, color: C.peri, fontFamily: FONT_MONO }}>
-        <div>© {new Date().getFullYear()} EVOLVE ENGINE, ALL RIGHTS RESERVED</div>
-        <div className="tracking-[0.2em]">THE FUTURE OF MARKETING</div>
-      </div>
+        ${regTab==='attend' ? `
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">LINKEDIN URL <span class="text-red-500">*</span></label>
+            <input type="url" id="linkedin_url" class="w-full px-3 py-2 border text-[13.5px]" placeholder="https://linkedin.com/in/yourname" style="border-color:#ccc;" value="${regForm.linkedin_url}" />
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">AREAS OF INTEREST <span class="text-red-500">*</span></label>
+            <div id="topicPicker" class="flex flex-wrap gap-1.5">${TOPICS.map(t => `<button type="button" class="px-2.5 py-1.5 text-[11px] font-semibold font-mono ${regForm.areas_of_interest.includes(t)?'bg-[#08091F] text-[#F5F1E8]':'bg-white text-[#08091F]'} border" onclick="toggleTopic('${t}')">${t}</button>`).join('')}</div>
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">CITY (OPTIONAL)</label>
+            <input type="text" id="city" class="w-full px-3 py-2 border text-[13.5px]" placeholder="e.g. Lagos" style="border-color:#ccc;" value="${regForm.city}" />
+          </div>
+        ` : `
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">CURRENT ROLE <span class="text-red-500">*</span></label>
+            <input type="text" id="role" class="w-full px-3 py-2 border text-[13.5px]" placeholder="e.g. Head of Growth" style="border-color:#ccc;" value="${regForm.role}" />
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">ORGANIZATION <span class="text-red-500">*</span></label>
+            <input type="text" id="organization" class="w-full px-3 py-2 border text-[13.5px]" style="border-color:#ccc;" value="${regForm.organization}" />
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">PROPOSED TOPIC <span class="text-red-500">*</span></label>
+            <select id="proposed_topic" class="w-full px-3 py-2 border text-[13.5px] bg-white" style="border-color:#ccc;">
+              <option value="">Select a topic...</option>
+              ${TOPICS.map(t => `<option ${regForm.proposed_topic===t?'selected':''}>${t}</option>`).join('')}
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">SHORT BIO <span class="text-red-500">*</span></label>
+            <textarea id="bio" rows="3" class="w-full px-3 py-2 border text-[13.5px]" style="border-color:#ccc;">${regForm.bio}</textarea>
+          </div>
+          <div>
+            <label class="block text-[10px] tracking-[0.15em] mb-1 font-mono font-medium text-[#0A1547]">PORTFOLIO / LINKEDIN URL <span class="text-red-500">*</span></label>
+            <input type="url" id="portfolio_url" class="w-full px-3 py-2 border text-[13.5px]" placeholder="https://" style="border-color:#ccc;" value="${regForm.portfolio_url}" />
+          </div>
+        `}
+        <button type="submit" class="w-full py-3 px-6 font-display font-bold text-[12.5px] tracking-[0.12em] bg-[#08091F] text-[#F5F1E8] hover:bg-black transition-colors">
+          ${regTab==='attend'?'REGISTER FOR FREE':'APPLY AS SPEAKER'} <svg class="w-4 h-4 inline ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </button>
+        ${regTab==='attend' ? '<p class="text-[10.5px] text-center font-mono text-gray-500">LIVE ATTENDANCE IS FREE. RECORDED VERSION SOLD SEPARATELY.</p>' : ''}
+      </form>
     </div>
-  </footer>
-);
-
-// ---------- STICKY MOBILE CTA ----------------------------------------------
-const StickyMobileCTA = () => {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 600);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <AnimatePresence>
-      {show && (
-        <motion.div initial={{ y: 80 }} animate={{ y: 0 }} exit={{ y: 80 }}
-          className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-3"
-          style={{ background: `${C.ink}f2`, backdropFilter: "blur(10px)" }}>
-          <button onClick={() => { pushDL("cta_click", { cta: "sticky_mobile" }); scrollToId("register"); }}
-            className="w-full py-3 font-bold text-[13px] tracking-[0.12em] flex items-center justify-center gap-2"
-            style={{ background: C.cream, color: C.ink, fontFamily: FONT_DISPLAY }}>
-            RESERVE YOUR SPOT <ArrowUpRight size={15} />
-          </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-// ---------- ACTIVITY TOAST -------------------------------------------------
-const ROLE_NOTES = [
-  "A marketer just registered", "A founder just registered",
-  "A creator just registered", "A student just registered",
-  "A tech professional just registered", "A freelancer just registered",
-  "A product manager just registered", "A growth strategist just registered",
-  "An aspiring marketer just registered",
-];
-
-const ActivityToast = () => {
-  const [idx, setIdx] = useState(-1);
-  useEffect(() => {
-    let i = 0;
-    const start = setTimeout(() => {
-      setIdx(0);
-      const cycle = setInterval(() => {
-        i = (i + 1) % ROLE_NOTES.length;
-        setIdx(-1);
-        setTimeout(() => setIdx(i), 400);
-      }, 8000);
-      return () => clearInterval(cycle);
-    }, 4000);
-    return () => clearTimeout(start);
-  }, []);
-  return (
-    <div className="hidden md:block fixed bottom-6 left-6 z-40 pointer-events-none">
-      <AnimatePresence>
-        {idx >= 0 && (
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.4 }}
-            className="flex items-center gap-2.5 px-4 py-2.5 max-w-sm"
-            style={{ background: C.cream, border: `1px solid ${C.ink}22` }}>
-            <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: C.red }} />
-            <span className="text-[12px] font-medium" style={{ color: C.ink, fontFamily: FONT_BODY }}>
-              {ROLE_NOTES[idx]}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-// ---------- ROOT -----------------------------------------------------------
-function App() {
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-  }, []);
-
-  return (
-    <div style={{
-      background: C.navy, color: C.cream, fontFamily: FONT_BODY,
-      "--ink": C.ink, "--navy": C.navy, "--lime": C.lime,
-    }}>
-      <Hero />
-      <Speakers />
-      <WhyItMatters />
-      <WhatYoullLearn />
-      <EventDetails />
-      <WhoShouldAttend />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
-      <StickyMobileCTA />
-      <ActivityToast />
-    </div>
-  );
+  `;
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+function switchTab(tab) {
+  regTab = tab;
+  renderForm();
+}
+renderForm();
+
+window.toggleTopic = function(t) {
+  if (regForm.areas_of_interest.includes(t)) regForm.areas_of_interest = regForm.areas_of_interest.filter(x=>x!==t);
+  else regForm.areas_of_interest.push(t);
+  renderForm();
+};
+
+window.submitForm = async function(e) {
+  e.preventDefault();
+  regForm.full_name = document.getElementById('full_name').value.trim();
+  regForm.email = document.getElementById('email').value.trim();
+  regForm.phone = document.getElementById('phone').value.trim();
+  if (regTab==='attend') {
+    regForm.linkedin_url = document.getElementById('linkedin_url').value.trim();
+    regForm.city = document.getElementById('city').value.trim();
+  } else {
+    regForm.role = document.getElementById('role').value.trim();
+    regForm.organization = document.getElementById('organization').value.trim();
+    regForm.proposed_topic = document.getElementById('proposed_topic').value;
+    regForm.bio = document.getElementById('bio').value.trim();
+    regForm.portfolio_url = document.getElementById('portfolio_url').value.trim();
+  }
+
+  if (!regForm.full_name || !regForm.email || !regForm.phone) {
+    alert('Please fill all required fields.');
+    return;
+  }
+  if (regTab==='attend' && (!regForm.linkedin_url || regForm.areas_of_interest.length===0)) {
+    alert('Please fill all required fields.');
+    return;
+  }
+  if (regTab==='speaker' && (!regForm.role || !regForm.organization || !regForm.proposed_topic || !regForm.bio || !regForm.portfolio_url)) {
+    alert('Please fill all required fields.');
+    return;
+  }
+
+  const payload = regTab==='attend' ? {
+    registration_type: 'attendee',
+    full_name: regForm.full_name, email: regForm.email, phone: regForm.phone,
+    linkedin_url: regForm.linkedin_url,
+    areas_of_interest: regForm.areas_of_interest.join(', '),
+    city: regForm.city,
+    timestamp: new Date().toISOString()
+  } : {
+    registration_type: 'speaker',
+    full_name: regForm.full_name, email: regForm.email, phone: regForm.phone,
+    role: regForm.role, organization: regForm.organization,
+    proposed_topic: regForm.proposed_topic, bio: regForm.bio,
+    portfolio_url: regForm.portfolio_url,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await fetch(GAS_ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) });
+    pushDL(regTab==='attend'?'conference_registration':'speaker_application');
+    document.getElementById('successTitle').textContent = regTab==='attend' ? "You're in. See you on July 4th." : "Application received.";
+    document.getElementById('successMsg').textContent = regTab==='attend' ? "We've saved your spot. A confirmation with the YouTube Live link is on its way to your inbox." : "Thanks for proposing to speak. We'll review your submission and get back to you over email within a few days.";
+    document.getElementById('successOverlay').classList.remove('hidden');
+  } catch(e) {
+    alert('Something went wrong. Please try again.');
+  }
+};
+
+window.closeSuccess = function() {
+  document.getElementById('successOverlay').classList.add('hidden');
+};
+
+// ========== STICKY CTA ==========
+window.addEventListener('scroll', () => {
+  const sticky = document.getElementById('stickyCTA');
+  if (window.scrollY > 600) sticky.classList.remove('hidden');
+  else sticky.classList.add('hidden');
+});
+
+// ========== ACTIVITY TOAST ==========
+const toast = document.getElementById('toast');
+const notes = [
+  "A marketer just registered", "A founder just registered", "A creator just registered",
+  "A student just registered", "A tech professional just registered", "A freelancer just registered",
+  "A product manager just registered", "A growth strategist just registered", "An aspiring marketer just registered"
+];
+let noteIdx = -1;
+function showToast() {
+  noteIdx = (noteIdx+1) % notes.length;
+  toast.innerHTML = `<div class="flex items-center gap-2.5 px-4 py-2.5 max-w-sm bg-[#F5F1E8] border border-[#08091F] border-opacity-20"><div class="w-1.5 h-1.5 rounded-full bg-[#E63946] animate-pulse"></div><span class="text-xs font-medium text-[#08091F]">${notes[noteIdx]}</span></div>`;
+  toast.classList.remove('opacity-0');
+  toast.classList.add('opacity-100');
+  setTimeout(() => toast.classList.replace('opacity-100','opacity-0'), 5000);
+}
+setTimeout(() => { showToast(); setInterval(showToast, 8000); }, 4000);
 </script>
 </body>
 </html>
